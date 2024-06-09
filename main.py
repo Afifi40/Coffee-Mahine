@@ -33,7 +33,7 @@ def prompt_user():
         print("What would you like? (espresso/latte/cappuccino): ")
         user_order = input().lower()
         if user_order == 'off':
-            # exit()
+            exit()
             pass
         elif user_order == 'report':
             pass
