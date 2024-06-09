@@ -52,7 +52,6 @@ def prompt_user() -> str:
     """
 Prompts user to enter his order.\
 :returns "Drink_type": type of drink the user ordered"""
-
     while True:
         print("What would you like? (espresso/latte/cappuccino): ")
         user_input = input().lower()
@@ -67,8 +66,14 @@ Prompts user to enter his order.\
 
 
 if __name__ == '__main__':
-    while True:
+    enough_resources = True
+    while enough_resources:
         chosen_drink = prompt_user()
+        enough_resources = resources_check(data_stub.MENU[chosen_drink]['ingredients'])
+
+
+
+
 
     print("Program end")
 
