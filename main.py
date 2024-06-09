@@ -60,12 +60,8 @@ def prompt_user():
         elif user_order == 'report':
             print_report(money)
             pass
-        elif user_order == 'espresso':
-            resources_check(data_stub.MENU['espresso']['ingredients'])
-        elif user_order == 'latte':
-            resources_check(data_stub.MENU['latte']['ingredients'])
-        elif user_order == 'cappuccino':
-            resources_check(data_stub.MENU['cappuccino']['ingredients'])
+        elif user_order == 'espresso' or 'latte' or 'cappuccino':
+            resources_check(data_stub.MENU[user_order]['ingredients'])
         else:
             print("Wrong Entry, Try_Again\n\n")
         # complete order
