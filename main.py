@@ -64,15 +64,25 @@ Prompts user to enter his order.\
             print("Wrong Entry, Try_Again\n\n")
 
 
+def enter_coins(drink_cost: float) -> float:
+    print("Please, enter coins (quarter/dime/nickle/pennie) in the form of ")
+    coin = 0.00
+    while coin <= drink_cost:
+        print("(Q/D/N/P) enter E if you're done")
+        coin = input().lower()
+
+    return 1.00
+
+
 if __name__ == '__main__':
-    enough_resources = True
-    while enough_resources:
+    while True:
         chosen_drink = prompt_user()
-        enough_resources = resources_check(data_stub.MENU[chosen_drink]['ingredients'])
 
+        enough_resources = True
+        while enough_resources:
+            enough_resources = resources_check(data_stub.MENU[chosen_drink]['ingredients'])
 
-
-
+        change = enter_coins(data_stub.MENU[chosen_drink]['money'])
 
     print("Program end")
 
