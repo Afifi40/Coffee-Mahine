@@ -5,6 +5,11 @@ data = data_stub
 
 
 def resources_check(drink: dict) -> bool:
+    """ Check if Drink's required resources exist or not
+:param drink: required resources for serving a specific drink
+:type drink: dictionary
+:returns True: if there are enough resources for that drink
+    """
     depleted_resources = ' '
     is_enough = True
     if data.resources["milk"] < drink["milk"]:
