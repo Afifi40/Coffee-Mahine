@@ -1,3 +1,4 @@
+from sys import exit
 
 import data_stub
 data = data_stub
@@ -30,5 +31,22 @@ def print_report():
 
 if __name__ == '__main__':
     print_report()
+    while True:
+        print("What would you like? (espresso/latte/cappuccino): ")
+        user_order = input().lower()
+        if user_order == 'off':
+            # exit()
+            pass
+        elif user_order == 'report':
+            pass
+        elif user_order == 'espresso':
+            pass
+        elif user_order == 'latte':
+            pass
+        elif user_order == 'cappuccino':
+            pass
+        else:
+            print("Wrong Entry, Try_Again\n\n")
+        # complete order
     print("END")
 
