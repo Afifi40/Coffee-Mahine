@@ -51,21 +51,23 @@ def resources_check(drink: dict) -> bool:
 def prompt_user():
     """ Prompt user, check what it'd like to order, show everytime order is completed, repeat.
         The prompt "What would you like? (espresso/latte/cappuccino): " """
+
     while True:
         print("What would you like? (espresso/latte/cappuccino): ")
-        user_order = input().lower()
-        if user_order == 'off':
+        user_input = input().lower()
+        if user_input == 'off':
             exit()
-        elif user_order == 'report':
+        elif user_input == 'report':
             print_report(money)
-        elif user_order == 'espresso' or 'latte' or 'cappuccino':
-            resources_check(data_stub.MENU[user_order]['ingredients'])
+        elif user_input == 'espresso' or 'latte' or 'cappuccino':
+            return user_input
         else:
             print("Wrong Entry, Try_Again\n\n")
-        # complete order
 
 
 if __name__ == '__main__':
-    prompt_user()
+    while True:
+        chosen_drink = prompt_user()
+
     print("Program end")
 
