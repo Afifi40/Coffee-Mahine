@@ -14,6 +14,8 @@ def print_report(profit: float):
     print(f'Coffee  = {data.resources["coffee"]}')
     print("Money: $" + "{:.2f}".format(profit))
     print()
+
+
 def resources_check(drink: dict) -> bool:
     """ Check if Drink's required resources exist or not
 :param drink: required resources for serving a specific drink
@@ -32,20 +34,9 @@ def resources_check(drink: dict) -> bool:
         depleted_resources += 'coffee, '
         is_enough = False
     if not depleted_resources.isspace():
-        print("Not Enough" + depleted_resources + " Ask for Supervisor Refill")
+        print("Sorry, There is Not Enough" + depleted_resources + " Ask for Supervisor Refill\n")
     return is_enough
 
-def print_report():
-    print(f'Input Resources {data.resources}')
-
-
-#   TODO 2 Turn off the Coffee machine by entering off to the prompt, code ends execution
-
-#   TODO 3 Entering REPORT to the prompt should print resources report
-
-#   TODO 4 Resources suffeciency check
-#    When the user enters a drink the program should check if resoruces are enough
-#    print "Sorry there is not enough water" if they aren't
 
 #   TODO 5 Prompt user to insert coins
 #    Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
@@ -70,7 +61,7 @@ def prompt_user():
             print_report(money)
             pass
         elif user_order == 'espresso':
-            print(resources_check(data_stub.MENU['espresso']['ingredients']))
+            resources_check(data_stub.MENU['espresso']['ingredients'])
         elif user_order == 'latte':
             resources_check(data_stub.MENU['latte']['ingredients'])
         elif user_order == 'cappuccino':
