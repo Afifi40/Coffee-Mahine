@@ -56,10 +56,8 @@ def prompt_user():
         user_order = input().lower()
         if user_order == 'off':
             exit()
-            pass
         elif user_order == 'report':
             print_report(money)
-            pass
         elif user_order == 'espresso' or 'latte' or 'cappuccino':
             resources_check(data_stub.MENU[user_order]['ingredients'])
         else:
