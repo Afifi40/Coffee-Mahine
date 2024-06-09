@@ -47,7 +47,11 @@ def prompt_user() -> str:
 Prompts user to enter his order.\
 :returns "Drink_type": type of drink the user ordered"""
     while True:
-        print("What would you like? (espresso/latte/cappuccino): ")
+        print("What would you like to order?")
+        print("espresso     $1.50")
+        print("latte        $2.50")
+        print("cappuccino   $3.00")
+
         user_input = input().lower()
         if user_input == 'off':
             exit()
