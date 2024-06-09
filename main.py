@@ -36,11 +36,6 @@ def resources_check(drink: dict) -> bool:
         print("Sorry, There is Not Enough" + depleted_resources + " Ask for Supervisor Refill\n")
     return is_enough
 
-
-#   TODO 6 Check transaction success
-#    if enough money is inserted, add cup profit to money in data_stub, return any extra money as change
-#    The change should be rounded to 2 decimal places.
-
 #   TODO 7 Make Coffee
 def prompt_user() -> str:
     """
