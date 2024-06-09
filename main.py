@@ -48,9 +48,10 @@ def resources_check(drink: dict) -> bool:
 #    The change should be rounded to 2 decimal places.
 
 #   TODO 7 Make Coffee
-def prompt_user():
-    """ Prompt user, check what it'd like to order, show everytime order is completed, repeat.
-        The prompt "What would you like? (espresso/latte/cappuccino): " """
+def prompt_user() -> str:
+    """
+Prompts user to enter his order.\
+:returns "Drink_type": type of drink the user ordered"""
 
     while True:
         print("What would you like? (espresso/latte/cappuccino): ")
