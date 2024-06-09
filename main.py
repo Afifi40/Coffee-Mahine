@@ -6,8 +6,7 @@ data = data_stub
 
 def print_report():
     print(f'Input Resources {data.resources}')
-#   TODO 1 Prompt user, check what it'd like to order, show everytime order is completed, repeat.
-#    The prompt "What would you like? (espresso/latte/cappuccino): "
+
 
 #   TODO 2 Turn off the Coffee machine by entering off to the prompt, code ends execution
 
@@ -27,10 +26,9 @@ def print_report():
 #    The change should be rounded to 2 decimal places.
 
 #   TODO 7 Make Coffee
-
-
-if __name__ == '__main__':
-    print_report()
+def prompt_user():
+    """ Prompt user, check what it'd like to order, show everytime order is completed, repeat.
+        The prompt "What would you like? (espresso/latte/cappuccino): " """
     while True:
         print("What would you like? (espresso/latte/cappuccino): ")
         user_order = input().lower()
@@ -48,5 +46,9 @@ if __name__ == '__main__':
         else:
             print("Wrong Entry, Try_Again\n\n")
         # complete order
-    print("END")
+
+
+if __name__ == '__main__':
+    prompt_user()
+    print("Program end")
 
