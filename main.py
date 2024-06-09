@@ -80,7 +80,7 @@ def enter_coins() -> float:
 
 def process_transaction(user_money: float, drink_cost: float) -> bool:
     global money
-    change = user_money - drink_cost
+    change = round(user_money - drink_cost, 2)
     if change < 0:
         print(f"Sorry that's not enough money. {user_money} refunded.")
         return False
@@ -91,9 +91,11 @@ def process_transaction(user_money: float, drink_cost: float) -> bool:
 
 
 def make_coffee(drink: str, ):
-    drink_ingredients = data_stub.MENU[chosen_drink]['ingredients']
-    data_stub.resources -= drink_ingredients
-    print_report()
+    drink_ingredients = data.MENU[chosen_drink]['ingredients']
+
+    data_stub.resources["milk"] -= drink_ingredients["milk"]
+    data_stub.resources["coffee"] -= drink_ingredients["coffee"]
+    data_stub.resources["water"] -= drink_ingredients["water"]
     print(f"Here is your {drink}. Enjoy!")
 
 
@@ -102,11 +104,11 @@ if __name__ == '__main__':
         chosen_drink = prompt_user()
         is_enough_resources = False
         while not is_enough_resources:
-            is_enough_resources = resources_check(data_stub.MENU[chosen_drink]['ingredients'])
+            is_enough_resources = resources_check(data.MENU[chosen_drink]['ingredients'])
 
         coins = enter_coins()
 
-        is_enough_money = process_transaction(coins, data_stub.MENU[chosen_drink]['cost'])
+        is_enough_money = process_transaction(coins, data.MENU[chosen_drink]['cost'])
         # drink_cost: float
         make_coffee(chosen_drink)
     print("Program end")
