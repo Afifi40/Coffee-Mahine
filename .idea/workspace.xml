@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e52cadb-4282-4264-9a49-47dde3a56200" name="Changes" comment="Added a stub for input data including resources and Menu,&#10;printed them both to make sure everything is working fine">
+    <list default="true" id="6e52cadb-4282-4264-9a49-47dde3a56200" name="Changes" comment="Task 4 Completed and tested&#10;added resources_check function&#10;required resources are now checked before any proccessing for the order or money is done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -23,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Task3-Adding-Report-Function" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,28 +43,28 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2hY2bd1ceASZDPo9LkUacedRfmm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Print-Report-feature&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Task4-Resources-Check",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Coffee_Machine" />
@@ -126,7 +126,63 @@
       <option name="project" value="LOCAL" />
       <updated>1717758314767</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added a bunch of TODOs which will be branced to different branches later">
+      <option name="closed" value="true" />
+      <created>1717925659869</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717925659869</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finished TODO 1 task, prompting user to enter order, built skeleton for tasks 2 &amp; 3">
+      <option name="closed" value="true" />
+      <created>1717926281395</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717926281395</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Cleaned Code, Added Task1 Code into a function caalled &quot;Prompt_user&quot;">
+      <option name="closed" value="true" />
+      <created>1717926546191</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717926546191</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Task 2 Finished&#10;Added Exit feature">
+      <option name="closed" value="true" />
+      <created>1717927888264</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1717927888264</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Task 3 Finished&#10;Added report function and the proper docstring&#10;Added Money global variable temporarily, &quot;should be removed later&quot;">
+      <option name="closed" value="true" />
+      <created>1717929345340</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717929345340</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Modified data dictionary&#10;data dictionary espresso's ingredients didn't include milk as on of its ingredients.&#10;Although it requires no milk, but a zero value for that ingredient should exist to deny bugs from appearing in the future and simplify current code">
+      <option name="closed" value="true" />
+      <created>1717931966030</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717931966030</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Task 4 Completed and tested&#10;added resources_check function&#10;required resources are now checked before any proccessing for the order or money is done">
+      <option name="closed" value="true" />
+      <created>1717932062873</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717932062873</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +191,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New Project Start" />
     <MESSAGE value="Added a stub for input data including resources and Menu,&#10;printed them both to make sure everything is working fine" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a stub for input data including resources and Menu,&#10;printed them both to make sure everything is working fine" />
+    <MESSAGE value="Added a bunch of TODOs which will be branced to different branches later" />
+    <MESSAGE value="Finished TODO 1 task, prompting user to enter order, built skeleton for tasks 2 &amp; 3" />
+    <MESSAGE value="Cleaned Code, Added Task1 Code into a function caalled &quot;Prompt_user&quot;" />
+    <MESSAGE value="Task 2 Finished&#10;Added Exit feature" />
+    <MESSAGE value="Task 3 Finished&#10;Added report function and the proper docstring&#10;Added Money global variable temporarily, &quot;should be removed later&quot;" />
+    <MESSAGE value="Modified data dictionary&#10;data dictionary espresso's ingredients didn't include milk as on of its ingredients.&#10;Although it requires no milk, but a zero value for that ingredient should exist to deny bugs from appearing in the future and simplify current code" />
+    <MESSAGE value="Task 4 Completed and tested&#10;added resources_check function&#10;required resources are now checked before any proccessing for the order or money is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task 4 Completed and tested&#10;added resources_check function&#10;required resources are now checked before any proccessing for the order or money is done" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -145,6 +208,6 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Coffee_Machine$main.coverage" NAME="main Coverage Results" MODIFIED="1717758384579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Coffee_Machine$main.coverage" NAME="main Coverage Results" MODIFIED="1717931832693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
