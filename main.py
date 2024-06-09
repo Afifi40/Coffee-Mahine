@@ -5,14 +5,13 @@ data = data_stub
 money = 2.00
 
 
-def print_report(profit: float):
-    """Entering REPORT to the prompt should print Water, Milk, and Coffee resources inside the machine
-    :param profit: Numerical representation of money collected by the machine"""
+def print_report():
+    """Entering REPORT to the prompt should print Water, Milk, and Coffee resources inside the machine"""
     print(f'Resources report:')
     print(f'Water   = {data.resources["water"]}')
     print(f'Milk    = {data.resources["milk"]}')
     print(f'Coffee  = {data.resources["coffee"]}')
-    print("Money: $" + "{:.2f}".format(profit))
+    print("Money: $" + "{:.2f}".format(money))
     print()
 
 
@@ -58,7 +57,7 @@ Prompts user to enter his order.\
         if user_input == 'off':
             exit()
         elif user_input == 'report':
-            print_report(money)
+            print_report()
         elif user_input == 'espresso' or 'latte' or 'cappuccino':
             return user_input
         else:
