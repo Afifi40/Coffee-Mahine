@@ -4,6 +4,22 @@ import data_stub
 data = data_stub
 
 
+def resources_check(drink: dict) -> bool:
+    depleted_resources = ' '
+    is_enough = True
+    if data.resources["milk"] < drink["milk"]:
+        depleted_resources += 'milk,'
+        is_enough = False
+    if data.resources["water"] < drink['water']:
+        depleted_resources += 'water, '
+        is_enough = False
+    if data.resources["coffee"] < drink['coffee']:
+        depleted_resources += 'coffee, '
+        is_enough = False
+    if not depleted_resources.isspace():
+        print("Not Enough" + depleted_resources + " Ask for Supervisor Refill")
+    return is_enough
+
 def print_report():
     print(f'Input Resources {data.resources}')
 
@@ -38,11 +54,11 @@ def prompt_user():
         elif user_order == 'report':
             pass
         elif user_order == 'espresso':
-            pass
+            print(resources_check(data_stub.MENU['espresso']['ingredients']))
         elif user_order == 'latte':
-            pass
+            resources_check(data_stub.MENU['latte']['ingredients'])
         elif user_order == 'cappuccino':
-            pass
+            resources_check(data_stub.MENU['cappuccino']['ingredients'])
         else:
             print("Wrong Entry, Try_Again\n\n")
         # complete order
@@ -50,5 +66,6 @@ def prompt_user():
 
 if __name__ == '__main__':
     prompt_user()
+
     print("Program end")
 
