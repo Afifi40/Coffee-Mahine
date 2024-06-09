@@ -90,6 +90,12 @@ def process_transaction(user_money: float, drink_cost: float) -> bool:
         return True
 
 
+def make_coffee(drink: str, ):
+    drink_ingredients = data_stub.MENU[chosen_drink]['ingredients']
+    data_stub.resources -= drink_ingredients
+    print_report()
+    print(f"Here is your {drink}. Enjoy!")
+
 
 if __name__ == '__main__':
     while True:
@@ -102,6 +108,6 @@ if __name__ == '__main__':
 
         is_enough_money = process_transaction(coins, data_stub.MENU[chosen_drink]['cost'])
         # drink_cost: float
-
+        make_coffee(chosen_drink)
     print("Program end")
 
