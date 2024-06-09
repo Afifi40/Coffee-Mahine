@@ -2,15 +2,20 @@ from sys import exit
 
 import data_stub
 data = data_stub
+money = 2.00
 
 
-def print_report():
-    print(f'Input Resources {data.resources}')
-
+def print_report(profit: float):
+    """Entering REPORT to the prompt should print Water, Milk, and Coffee resources inside the machine
+    :param profit: Numerical representation of money collected by the machine"""
+    print(f'Resources report:')
+    print(f'Water   = {data.resources["water"]}')
+    print(f'Milk    = {data.resources["milk"]}')
+    print(f'Coffee  = {data.resources["coffee"]}')
+    print("Money: $" + "{:.2f}".format(profit))
+    print()
 
 #   TODO 2 Turn off the Coffee machine by entering off to the prompt, code ends execution
-
-#   TODO 3 Entering REPORT to the prompt should print resources report
 
 #   TODO 4 Resources suffeciency check
 #    When the user enters a drink the program should check if resoruces are enough
@@ -36,6 +41,7 @@ def prompt_user():
             exit()
             pass
         elif user_order == 'report':
+            print_report(money)
             pass
         elif user_order == 'espresso':
             pass
