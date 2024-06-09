@@ -37,12 +37,7 @@ def resources_check(drink: dict) -> bool:
     return is_enough
 
 
-#   TODO 5 Prompt user to insert coins
-#    Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
-#    calculate total value inserted on each coin insert
-
 #   TODO 6 Check transaction success
-#    if not enough money inserted print "Sorry that's not enough money. Money refunded"
 #    if enough money is inserted, add cup profit to money in data_stub, return any extra money as change
 #    The change should be rounded to 2 decimal places.
 
@@ -83,23 +78,30 @@ def enter_coins() -> float:
             return round(entered_money, 2)
         print("Your Money = ", round(entered_money, 2))
 
-    # if entered_money - drink_cost < 0:
-    #     print("Not enough money entered, returning all inserted money...")
-    #     drink_cost = 0
-    # else:
-    #     print("Your order is being processed..., returning change...")
-    #
+
+def process_transaction(user_money: float, drink_cost: float) -> bool:
+    global money
+    change = user_money - drink_cost
+    if change < 0:
+        print(f"Sorry that's not enough money. {user_money} refunded.")
+        return False
+    else:
+        print(f"Your order is being processed..., returning change, {change}...")
+        money += drink_cost
+        return True
+
 
 
 if __name__ == '__main__':
     while True:
         chosen_drink = prompt_user()
+        is_enough_resources = False
+        while not is_enough_resources:
+            is_enough_resources = resources_check(data_stub.MENU[chosen_drink]['ingredients'])
 
-        enough_resources = False
-        while not enough_resources:
-            enough_resources = resources_check(data_stub.MENU[chosen_drink]['ingredients'])
+        coins = enter_coins()
 
-        coins = enter_coins()  # data_stub.MENU[chosen_drink]['cost']
+        is_enough_money = process_transaction(coins, data_stub.MENU[chosen_drink]['cost'])
         # drink_cost: float
 
     print("Program end")
