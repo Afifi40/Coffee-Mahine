@@ -1,5 +1,5 @@
 from sys import exit
-
+from os import system
 import data_stub
 data = data_stub
 money = 2.00
@@ -64,25 +64,43 @@ Prompts user to enter his order.\
             print("Wrong Entry, Try_Again\n\n")
 
 
-def enter_coins(drink_cost: float) -> float:
+def enter_coins() -> float:
     print("Please, enter coins (quarter/dime/nickle/pennie) in the form of ")
-    coin = 0.00
-    while coin <= drink_cost:
-        print("(Q/D/N/P) enter E if you're done")
-        coin = input().lower()
+    print("(Q/D/N/P/E), Enter E when you're done ")
 
-    return 1.00
+    entered_money = 0.00
+    while True:
+        coin = input().upper()
+        if coin == 'Q':
+            entered_money += 0.25
+        elif coin == 'D':
+            entered_money += 0.10
+        elif coin == 'N':
+            entered_money += 0.05
+        elif coin == 'P':
+            entered_money += 0.01
+        elif coin == 'E':
+            return round(entered_money, 2)
+        print("Your Money = ", round(entered_money, 2))
+
+    # if entered_money - drink_cost < 0:
+    #     print("Not enough money entered, returning all inserted money...")
+    #     drink_cost = 0
+    # else:
+    #     print("Your order is being processed..., returning change...")
+    #
 
 
 if __name__ == '__main__':
     while True:
         chosen_drink = prompt_user()
 
-        enough_resources = True
-        while enough_resources:
+        enough_resources = False
+        while not enough_resources:
             enough_resources = resources_check(data_stub.MENU[chosen_drink]['ingredients'])
 
-        change = enter_coins(data_stub.MENU[chosen_drink]['money'])
+        coins = enter_coins()  # data_stub.MENU[chosen_drink]['cost']
+        # drink_cost: float
 
     print("Program end")
 
