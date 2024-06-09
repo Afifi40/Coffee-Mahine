@@ -83,12 +83,15 @@ def enter_coins() -> float:
             return round(entered_money, 2)
         print("Your Money = ", round(entered_money, 2))
 
-    # if entered_money - drink_cost < 0:
-    #     print("Not enough money entered, returning all inserted money...")
-    #     drink_cost = 0
-    # else:
-    #     print("Your order is being processed..., returning change...")
-    #
+
+def check_transaction(user_money: float, drink_cost: float) -> bool:
+    if user_money - drink_cost < 0:
+        print("Not enough money entered, returning all inserted money...")
+        return False
+    else:
+        print("Your order is being processed..., returning change...")
+        return True
+
 
 
 if __name__ == '__main__':
