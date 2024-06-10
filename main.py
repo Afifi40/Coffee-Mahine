@@ -1,115 +1,120 @@
 from sys import exit
-from os import system
 import data_stub
-data = data_stub
-money = 2.00
 
 
-def print_report():
-    """Entering REPORT to the prompt should print Water, Milk, and Coffee resources inside the machine"""
-    print(f'Resources report:')
-    print(f'Water   = {data.resources["water"]}')
-    print(f'Milk    = {data.resources["milk"]}')
-    print(f'Coffee  = {data.resources["coffee"]}')
-    print("Money: $" + "{:.2f}".format(money))
-    print()
+class CoffeMachine:
+    MENU: dict
+    resources: dict
+    money: float
 
+    def __init__(self,
+                 initial_money: float = 2.00,
+                 shop_menu: dict = data_stub.MENU,
+                 machine_resources: dict = data_stub.resources):
+        self.money = initial_money
+        self.MENU = shop_menu
+        self.resources = machine_resources
 
-def resources_check(drink: dict) -> bool:
-    """ Check if Drink's required resources exist or not
-:param drink: required resources for serving a specific drink
-:type drink: dictionary
-:returns True: if there are enough resources for that drink
-    """
-    depleted_resources = ' '
-    is_enough = True
-    if data.resources["milk"] < drink["milk"]:
-        depleted_resources += 'milk,'
-        is_enough = False
-    if data.resources["water"] < drink['water']:
-        depleted_resources += 'water, '
-        is_enough = False
-    if data.resources["coffee"] < drink['coffee']:
-        depleted_resources += 'coffee, '
-        is_enough = False
-    if not depleted_resources.isspace():
-        print("Sorry, There is Not Enough" + depleted_resources + " Ask for Supervisor Refill\n")
-    return is_enough
+    def print_report(self):
+        """Entering REPORT to the prompt should print Water, Milk, and Coffee resources inside the machine"""
+        print(f'Resources report:')
+        print(f'Water   = {self.resources["water"]}')
+        print(f'Milk    = {self.resources["milk"]}')
+        print(f'Coffee  = {self.resources["coffee"]}')
+        print("Money: $" + "{:.2f}".format(self.money))
+        print()
 
-#   TODO 7 Make Coffee
-def prompt_user() -> str:
-    """
-Prompts user to enter his order.\
-:returns "Drink_type": type of drink the user ordered"""
-    while True:
-        print("What would you like to order?")
-        print("espresso     $1.50")
-        print("latte        $2.50")
-        print("cappuccino   $3.00")
+    def resources_check(self, drink: str) -> bool:
+        """ Check if Drink's required resources exist or not
+    :param drink: type of drink of which resources are to be checked
+    :returns True: if there are enough resources for that drink
+        """
+        drink_ingredient = self.MENU[drink]['ingredients']
+        depleted_resources = ' '
+        is_enough = True
+        if self.resources["milk"] < drink_ingredient["milk"]:
+            depleted_resources += 'milk,'
+            is_enough = False
+        if self.resources["water"] < drink_ingredient['water']:
+            depleted_resources += 'water, '
+            is_enough = False
+        if self.resources["coffee"] < drink_ingredient['coffee']:
+            depleted_resources += 'coffee, '
+            is_enough = False
+        if not depleted_resources.isspace():
+            print("Sorry, There is Not Enough" + depleted_resources + " Ask for Supervisor Refill\n")
+        return is_enough
 
-        user_input = input().lower()
-        if user_input == 'off':
-            exit()
-        elif user_input == 'report':
-            print_report()
-        elif user_input == 'espresso' or 'latte' or 'cappuccino':
-            return user_input
+    def prompt_user(self) -> str:
+        """
+    Prompts user to enter his order.\
+    :returns "Drink_type": type of drink the user ordered"""
+        while True:
+            print("What would you like to order?")
+            print("espresso     $1.50")
+            print("latte        $2.50")
+            print("cappuccino   $3.00")
+            user_input = user_input.lower()
+
+            if user_input == 'off':
+                exit()
+            elif user_input == 'report':
+                self.print_report()
+            elif user_input == 'espresso' or 'latte' or 'cappuccino':
+                return user_input
+            else:
+                print("Wrong Entry, Try_Again\n\n")
+
+    @staticmethod
+    def enter_coins() -> float:
+        print("Please, enter coins (quarter/dime/nickle/pennie) in the form of ")
+        print("(Q/D/N/P/E), Enter E when you're done ")
+
+        entered_money = 0.00
+        while True:
+            coin = input().upper()
+            if coin == 'Q':
+                entered_money += 0.25
+            elif coin == 'D':
+                entered_money += 0.10
+            elif coin == 'N':
+                entered_money += 0.05
+            elif coin == 'P':
+                entered_money += 0.01
+            elif coin == 'E':
+                return round(entered_money, 2)
+            print("Your Money = ", round(entered_money, 2))
+
+    def process_transaction(self, user_money: float, drink: str) -> bool:
+        drink_cost = self.MENU[drink]['cost']
+        change = round(user_money - drink_cost, 2)
+        if change < 0:
+            print(f"Sorry that's not enough money. {user_money} refunded.")
+            return False
         else:
-            print("Wrong Entry, Try_Again\n\n")
+            print(f"Your order is being processed..., returning change, {change}...")
+            self.money += drink_cost
+            return True
 
+    def make_coffee(self, drink: str, ):
+        drink_ingredients = self.MENU[drink]['ingredients']
 
-def enter_coins() -> float:
-    print("Please, enter coins (quarter/dime/nickle/pennie) in the form of ")
-    print("(Q/D/N/P/E), Enter E when you're done ")
-
-    entered_money = 0.00
-    while True:
-        coin = input().upper()
-        if coin == 'Q':
-            entered_money += 0.25
-        elif coin == 'D':
-            entered_money += 0.10
-        elif coin == 'N':
-            entered_money += 0.05
-        elif coin == 'P':
-            entered_money += 0.01
-        elif coin == 'E':
-            return round(entered_money, 2)
-        print("Your Money = ", round(entered_money, 2))
-
-
-def process_transaction(user_money: float, drink_cost: float) -> bool:
-    global money
-    change = round(user_money - drink_cost, 2)
-    if change < 0:
-        print(f"Sorry that's not enough money. {user_money} refunded.")
-        return False
-    else:
-        print(f"Your order is being processed..., returning change, {change}...")
-        money += drink_cost
-        return True
-
-
-def make_coffee(drink: str, ):
-    drink_ingredients = data.MENU[chosen_drink]['ingredients']
-
-    data_stub.resources["milk"] -= drink_ingredients["milk"]
-    data_stub.resources["coffee"] -= drink_ingredients["coffee"]
-    data_stub.resources["water"] -= drink_ingredients["water"]
-    print(f"Here is your {drink}. Enjoy!")
+        data_stub.resources["milk"] -= drink_ingredients["milk"]
+        data_stub.resources["coffee"] -= drink_ingredients["coffee"]
+        data_stub.resources["water"] -= drink_ingredients["water"]
+        print(f"Here is your {drink}. Enjoy!")
 
 
 if __name__ == '__main__':
+    my_coffee_machine = CoffeMachine(4.35)
+
     while True:
-        chosen_drink = prompt_user()
+        chosen_drink = my_coffee_machine.prompt_user()
         is_enough_resources = False
         while not is_enough_resources:
-            is_enough_resources = resources_check(data.MENU[chosen_drink]['ingredients'])
-
-        coins = enter_coins()
-
-        is_enough_money = process_transaction(coins, data.MENU[chosen_drink]['cost'])
+            is_enough_resources = my_coffee_machine.resources_check(chosen_drink)
+        coins = CoffeMachine.enter_coins()
+        is_enough_money = my_coffee_machine.process_transaction(coins, chosen_drink)
         # drink_cost: float
-        make_coffee(chosen_drink)
-    print("Program end")
-
+        my_coffee_machine.make_coffee(chosen_drink)
+    # print("Program end")
