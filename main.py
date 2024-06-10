@@ -18,10 +18,10 @@ class CoffeMachine:
     def print_report(self):
         """Entering REPORT to the prompt should print Water, Milk, and Coffee resources inside the machine"""
         print(f'Resources report:')
-        print(f'Water   = {self.resources["water"]}')
-        print(f'Milk    = {self.resources["milk"]}')
-        print(f'Coffee  = {self.resources["coffee"]}')
-        print("Money: $" + "{:.2f}".format(self.money))
+        for drink_resource in self.resources:
+            disp_msg = str.ljust(drink_resource, 10) + str(self.resources[drink_resource]) + "mL"
+            print(disp_msg)
+        print("Money:    $" + "{:.2f}".format(self.money))
         print()
 
     def resources_check(self, drink: str) -> bool:
