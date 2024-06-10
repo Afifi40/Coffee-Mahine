@@ -97,10 +97,8 @@ class CoffeMachine:
 
     def make_coffee(self, drink: str, ):
         drink_ingredients = self.MENU[drink]['ingredients']
-
-        data_stub.resources["milk"] -= drink_ingredients["milk"]
-        data_stub.resources["coffee"] -= drink_ingredients["coffee"]
-        data_stub.resources["water"] -= drink_ingredients["water"]
+        for drink_resource in self.resources:
+            self.resources[drink_resource] -= drink_ingredients[drink_resource]
         print(f"Here is your {drink}. Enjoy!")
 
 
