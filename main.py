@@ -54,13 +54,15 @@ class CoffeMachine:
             print("espresso     $1.50")
             print("latte        $2.50")
             print("cappuccino   $3.00")
-            user_input = input().lower()
+            user_input = input()
+            if user_input.isalpha():
+                user_input = user_input.lower()
 
             if user_input == 'off':
                 exit()
             elif user_input == 'report':
                 self.print_report()
-            elif user_input == 'espresso' or 'latte' or 'cappuccino':
+            elif data_stub.MENU.keys().__contains__(user_input):
                 return user_input
             else:
                 print("Wrong Entry, Try_Again\n\n")
@@ -107,7 +109,7 @@ class CoffeMachine:
 
 if __name__ == '__main__':
     my_coffee_machine = CoffeMachine(4.35)
-
+    # print(list(data_stub.MENU.keys()))
     while True:
         chosen_drink = my_coffee_machine.prompt_user()
         is_enough_resources = False
