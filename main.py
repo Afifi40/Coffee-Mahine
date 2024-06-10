@@ -32,16 +32,12 @@ class CoffeMachine:
         drink_ingredient = self.MENU[drink]['ingredients']
         depleted_resources = ' '
         is_enough = True
-        if self.resources["milk"] < drink_ingredient["milk"]:
-            depleted_resources += 'milk,'
-            is_enough = False
-        if self.resources["water"] < drink_ingredient['water']:
-            depleted_resources += 'water, '
-            is_enough = False
-        if self.resources["coffee"] < drink_ingredient['coffee']:
-            depleted_resources += 'coffee, '
-            is_enough = False
-        if not depleted_resources.isspace():
+        for drink_resource in self.resources:
+            if self.resources[drink_resource] < drink_ingredient[drink_resource]:
+                depleted_resources += drink_resource + ', '
+                is_enough = False
+
+        if not is_enough:
             print("Sorry, There is Not Enough" + depleted_resources + " Ask for Supervisor Refill\n")
         return is_enough
 
@@ -51,8 +47,8 @@ class CoffeMachine:
     :returns "Drink_type": type of drink the user ordered"""
         while True:
             print("What would you like to order?")
-            for drink in self.MENU:
-                disp_msg = str.ljust(drink, 15) + str(self.MENU[drink]['cost'])
+            for menu_drink in self.MENU:
+                disp_msg = str.ljust(menu_drink, 15) + str(self.MENU[menu_drink]['cost'])
                 print(disp_msg)
 
             user_input = input()
@@ -113,11 +109,10 @@ if __name__ == '__main__':
     # print(list(data_stub.MENU.keys()))
     while True:
         chosen_drink = my_coffee_machine.prompt_user()
-        is_enough_resources = False
-        while not is_enough_resources:
-            is_enough_resources = my_coffee_machine.resources_check(chosen_drink)
-        coins = CoffeMachine.enter_coins()
-        is_enough_money = my_coffee_machine.process_transaction(coins, chosen_drink)
-        # drink_cost: float
-        my_coffee_machine.make_coffee(chosen_drink)
+        is_enough_resources = my_coffee_machine.resources_check(chosen_drink)
+        if is_enough_resources:
+            coins = CoffeMachine.enter_coins()
+            is_enough_money = my_coffee_machine.process_transaction(coins, chosen_drink)
+            # drink_cost: float
+            my_coffee_machine.make_coffee(chosen_drink)
     # print("Program end")
