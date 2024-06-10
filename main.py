@@ -54,7 +54,7 @@ class CoffeMachine:
             print("espresso     $1.50")
             print("latte        $2.50")
             print("cappuccino   $3.00")
-            user_input = user_input.lower()
+            user_input = input().lower()
 
             if user_input == 'off':
                 exit()
