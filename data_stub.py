@@ -36,6 +36,15 @@ MENU = {
         },
         "cost": 3.0,
     },
+    "Mocha": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+            "cocoa": 40,
+        },
+        "cost": 4,
+    },
 }
 
 resources = {
