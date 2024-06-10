@@ -51,9 +51,10 @@ class CoffeMachine:
     :returns "Drink_type": type of drink the user ordered"""
         while True:
             print("What would you like to order?")
-            print("espresso     $1.50")
-            print("latte        $2.50")
-            print("cappuccino   $3.00")
+            for drink in self.MENU:
+                disp_msg = str.ljust(drink, 15) + str(self.MENU[drink]['cost'])
+                print(disp_msg)
+
             user_input = input()
             if user_input.isalpha():
                 user_input = user_input.lower()
