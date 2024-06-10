@@ -8,6 +8,14 @@ MENU = {
         },
         "cost": 1.5,
     },
+    "Doppio": {
+        "ingredients": {
+            "water": 100,
+            "milk": 0,
+            "coffee": 24,
+        },
+        "cost": 2.35,
+    },
     "latte": {
         "ingredients": {
             "water": 200,
@@ -23,7 +31,7 @@ MENU = {
             "coffee": 24,
         },
         "cost": 3.0,
-    }
+    },
 }
 
 resources = {
