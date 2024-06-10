@@ -36,7 +36,7 @@ MENU = {
         },
         "cost": 3.0,
     },
-    "Mocha": {
+    "mocha": {
         "ingredients": {
             "water": 250,
             "milk": 100,
