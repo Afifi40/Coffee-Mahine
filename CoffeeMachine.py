@@ -1,7 +1,7 @@
 from sys import exit
 import data_stub
 
-
+COIN_TYPES = {"Q": 0.25, "D": 0.1, "N": 0.05, "P": 0.01, }
 class CoffeeMachine:
     MENU: dict
     resources: dict
@@ -66,22 +66,16 @@ class CoffeeMachine:
 
     @staticmethod
     def enter_coins() -> float:
-        print("Please, enter coins (quarter/dime/nickle/pennie) in the form of ")
-        print("(Q/D/N/P/E), Enter E when you're done ")
-
         entered_money = 0.00
+        print("Please, enter coins (quarter/dime/nickle/pennie) in the form of ")
+        print("(Q/D/N/P)")
+
         while True:
             coin = input().upper()
-            if coin == 'Q':
-                entered_money += 0.25
-            elif coin == 'D':
-                entered_money += 0.10
-            elif coin == 'N':
-                entered_money += 0.05
-            elif coin == 'P':
-                entered_money += 0.01
-            elif coin == 'E':
+            if coin not in COIN_TYPES:
                 return round(entered_money, 2)
+            else:
+                entered_money += COIN_TYPES[coin]
             print("Your Money = ", round(entered_money, 2))
 
     def process_transaction(self, user_money: float, drink: str) -> bool:
